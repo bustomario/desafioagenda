@@ -1,9 +1,9 @@
 <?php
 
     include 'conexionBD.php';
-    CrearUsuarios("Leticia","1980/12/18","letib@live.com","123456");
-    CrearUsuarios("Dora Isabel","1965/12/28","dorita@live.com","123456");
-    CrearUsuarios("Robert Blaires","1976/07/02","robertblaires@live.com","123456");
+    CrearUsuarios("Leticia","1980/12/18","leti@mail.com","123456");
+    CrearUsuarios("Dora Isabel","1960/12/28","dorita@msn.com","123456");
+    CrearUsuarios("Roberto Caceres","1940/05/16","rcaceres@hotmail.com","123456");
 
     function CrearUsuarios($Nombre,$FechaNacimiento,$UserName,$Password){
     IniciarConexion();

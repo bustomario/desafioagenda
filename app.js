@@ -11,18 +11,19 @@ class EventsManager {
         let url = '../server/getEvents.php'
         $.ajax({
           url: url,
-          dataType: "json",
           cache: false,
           processData: false,
           contentType: false,
           type: 'GET',
           success: (data) =>{
-            if (data.msg=="OK") {
-              this.poblarCalendario(data.eventos)
-            }else {
-              alert(data.msg)
-              window.location.href = 'index.html';
+            //if (data.msg=="OK") {
+            if(data!=null){
+              this.poblarCalendario(data);
             }
+            //}else {
+              //alert(data.msg);
+              //window.location.href = 'index.html';
+            //}
           },
           error: function(){
             alert("error en la comunicación con el servidor");
@@ -38,7 +39,7 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2016-11-01',
+        	defaultDate: Date.getdate,
         	navLinks: true,
         	editable: true,
         	eventLimit: true,
@@ -97,12 +98,14 @@ class EventsManager {
             alert('Se ha añadido el evento exitosamente')
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
+                id: data.Id,
                 title: $('#titulo').val(),
                 start: $('#start_date').val(),
                 allDay: true
               })
             }else {
               $('.calendario').fullCalendar('renderEvent', {
+                id: data.Id,
                 title: $('#titulo').val(),
                 start: $('#start_date').val()+" "+$('#start_hour').val(),
                 allDay: false,
